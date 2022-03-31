@@ -1,0 +1,10 @@
+# Folders
+.vscode/
+End-Project/
+
+# Files
+*.o
+README.md
+
+# Executable
+map
