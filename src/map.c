@@ -18,10 +18,10 @@ int map(char *filepath)
 
     while (sfRenderWindow_isOpen(window)) {
         sfRenderWindow_drawSprite(window, objects->background, NULL);     // === EX 01 ===
-        //sfRenderWindow_drawText(window, objects->filepath, NULL);         // === EX 02 ===
-        //sfRenderWindow_drawSprite(window, objects->select, NULL);         // === EX 03 ===
+        // sfRenderWindow_drawText(window, objects->filepath, NULL);         // === EX 02 ===
+        // sfRenderWindow_drawSprite(window, objects->select, NULL);         // === EX 03 ===
         sfRenderWindow_display(window);
-        analyse_event(window, event, objects);
+        event_handling(window, event, objects);
     }
     free_objects(objects);
     sfRenderWindow_destroy(window);

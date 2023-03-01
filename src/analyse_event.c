@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** analyse_event.c
+** event_handling.c
 ** File description:
 ** Analyse events from user.
 */
@@ -9,9 +9,10 @@
 #include <stdio.h>
 #include <string.h>
 
-static void analyse_event_edit(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
+static void event_handling_edit(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
 {
     sfVector2f pos_select = sfSprite_getPosition(objects->select);
+    sfVector2i pos = {pos_select.x / IMG_WIDTH, pos_select.y / IMG_HEIGHT};
 
     while (sfRenderWindow_pollEvent(window, &event)) {
         if (event.type == sfEvtClosed)
@@ -31,9 +32,8 @@ static void analyse_event_edit(sfRenderWindow *window, sfEvent event, object_t *
     }
 }
 
-static void analyse_event_new(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
+static void event_handling_new(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
 {
-    FILE *ptr = NULL;
     int i = 0;
 
     while (sfRenderWindow_pollEvent(window, &event)) {
@@ -53,7 +53,7 @@ static void analyse_event_new(sfRenderWindow *window, sfEvent event, object_t *o
     }
 }
 
-static void analyse_event_choose(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
+static void event_handling_choose(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
 {
     while (sfRenderWindow_pollEvent(window, &event)) {
         if (event.type == sfEvtClosed)
@@ -65,36 +65,36 @@ static void analyse_event_choose(sfRenderWindow *window, sfEvent event, object_t
             *offset = IDX_NEW_FILEPATH;
             choose_correct_bg(window, offset, objects);
             sfText_setPosition(objects->filepath, (sfVector2f){15, WIN_HEIGHT / 2});
-        }// else if (event.type == sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {    // === EX 03 ===
+        // } else if (event.type == sfEvtMouseButtonPressed && event.mouseButton.button == sfMouseLeft) {    // === EX 03 ===
         //    *offset = IDX_EDIT_FILE;
         //    choose_correct_bg(window, offset, objects);
         //    sfSprite_setPosition(objects->select, (sfVector2f){0, 0});
-        //}
+        }
     }
 }
 
-static void analyse_event_map(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
+static void event_handling_map(sfRenderWindow *window, sfEvent event, object_t *objects, int *offset)
 {
     while (sfRenderWindow_pollEvent(window, &event)) {
         if (event.type == sfEvtClosed)
             sfRenderWindow_close(window);
-        //if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape) {     // === EX 02 ===
+        // if (event.type == sfEvtKeyPressed && event.key.code == sfKeyEscape) {     // === EX 02 ===
         //    *offset = IDX_CHOOSE;
         //    choose_correct_bg(window, offset, objects);
-        //}
+        // }
     }
 }
 
-void analyse_event(sfRenderWindow *window, sfEvent event, object_t *objects)
+void event_handling(sfRenderWindow *window, sfEvent event, object_t *objects)
 {
     static int offset = IDX_MAP;
 
     if (offset == IDX_MAP)
-        analyse_event_map(window, event, objects, &offset);
-    //else if (offset == IDX_CHOOSE)                                // === EX 02 ===
-    //    analyse_event_choose(window, event, objects, &offset);    // === EX 02 ===
-    //else if (offset == IDX_NEW_FILEPATH)                          // === EX 02 ===
-    //    analyse_event_new(window, event, objects, &offset);       // === EX 02 ===
-    //else if (offset == IDX_EDIT_FILE)                             // === EX 03 ===
-    //    analyse_event_edit(window, event, objects, &offset);      // === EX 03 ===
+        event_handling_map(window, event, objects, &offset);
+    // else if (offset == IDX_CHOOSE)                                // === EX 02 ===
+    //    event_handling_choose(window, event, objects, &offset);    // === EX 02 ===
+    // else if (offset == IDX_NEW_FILEPATH)                          // === EX 02 ===
+    //    event_handling_new(window, event, objects, &offset);       // === EX 02 ===
+    // else if (offset == IDX_EDIT_FILE)                             // === EX 03 ===
+    //    event_handling_edit(window, event, objects, &offset);      // === EX 03 ===
 }

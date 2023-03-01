@@ -58,13 +58,13 @@ int **load_map_from_file(char const *filepath, int rows, int cols);
 void write_in_file(int x, int y, char *filepath, char new_char);
 
 /**
- * @brief Analyse events from user inputs
+ * @brief Handle events from user inputs
  *
  * @param window Main window of the project
- * @param event Event to analyse
- * @param objects Objects usefull to analyse
+ * @param event Event to handle
+ * @param objects Objects useful to handle
  */
-void analyse_event(sfRenderWindow *window, sfEvent event, object_t *objects);
+void event_handling(sfRenderWindow *window, sfEvent event, object_t *objects);
 
 /**
  * @brief Create a map object

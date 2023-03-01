@@ -5,11 +5,12 @@
 ## Makefile for project named: map
 ##
 
-SRC				=		map.c 				\
-						create_functions.c 	\
-						destroy_functions.c	\
-						analyse_event.c	 	\
-						objects.c	 		\
+SRC				=		analyse_event.c 		\
+						create_functions.c 		\
+						map.c 					\
+						create_functions.c 		\
+						destroy_functions.c		\
+						objects.c	 			\
 
 
 SRC_MAIN		=		main.c
